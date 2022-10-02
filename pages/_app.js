@@ -1,17 +1,17 @@
 import '../styles/globals.css';
 import Navbar from '../components/Navbar';
 import { Toaster } from 'react-hot-toast';
-import { createContext } from 'react';
+import { useUserData } from '../lib/hooks';
 import { UserContext } from '../lib/context';
 import { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth, firestore } from '../lib/firebase';
 
 function MyApp({ Component, pageProps }) {
-	const [username, setUsername] = useState(null);
-
+	const userData = useUserData();
 	return (
 		<>
-			<UserContext.Provider value={{ user: {}, username: 'Chris' }}>
+			<UserContext.Provider value={userData}>
 				<Navbar />
 				<Component {...pageProps} />
 				<Toaster />

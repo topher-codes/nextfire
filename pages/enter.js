@@ -3,7 +3,9 @@ import { useContext } from 'react';
 import { UserContext } from '../lib/context';
 
 export default function Enter(props) {
-	const { user, username } = useContext(UserContext);
+	// const { user, username } = useContext(UserContext);
+	const user = null;
+	const username = null;
 	return (
 		<main>
 			{user ? (
@@ -21,11 +23,7 @@ export default function Enter(props) {
 
 function SignInButton() {
 	const signInWithGoogle = async () => {
-		try {
-			await auth.signInWithPopup(googleAuthProvider);
-		} catch (error) {
-			console.error(error);
-		}
+		await auth.signInWithPopup(googleAuthProvider);
 	};
 
 	return (
@@ -37,4 +35,6 @@ function SignInButton() {
 function SignOutButton() {
 	return <button onClick={() => auth.signOut()}>Sign Out</button>;
 }
-function UsernameForm() {}
+function UsernameForm() {
+	return null;
+}
